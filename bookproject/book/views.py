@@ -9,7 +9,7 @@ from django.views.generic import (
     DeleteView,
     UpdateView,
     )
-from .models import Book
+from .models import Book, Review
 
 class ListBookView(ListView):
   template_name = 'book/book_list.html'
@@ -48,3 +48,8 @@ def index_view(request):
 #   logout(request)
 #   # return redirect('index')
 #   return render(request, 'book/index.html', {})
+
+class CreateReviewView(CreateView):
+    model = Review
+    template_name = 'book/review_form.html'
+    fields = ('book', 'title', 'text', 'rate')
